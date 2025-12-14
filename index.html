@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[RBX] Mace PVP Community - Tiers</title>
     <link rel="stylesheet" href="style.css">
-    </head>
-<body>
+</head>
+<body class="loading">
     <header>
         <div class="navbar">
             <nav>
                 <a href="https://discord.gg/yj53h5DHku" target="_blank" class="nav-item discord-link">
                     👾 Discord
                 </a>
-                <a href="#settings" class="nav-item">⚙️ Settings</a>
-                <a href="#information" class="nav-item">ℹ️ Information</a>
+                <a href="#" id="settings-btn" class="nav-item">⚙️ Settings</a>
+                <a href="#" id="info-btn" class="nav-item">ℹ️ Information</a>
             </nav>
         </div>
-        <h1>⚔️ [RBX] Mace PVP Community - Tiers</h1>
-        <p>Official Tier List for all competitive members from the discord commuunity.</p>
+        
+        <div class="header-content">
+            <img src="mace-icon.png" alt="Mace PVP Icon" class="site-icon">
+            <h1>⚔️ [RBX] Mace PVP Community - Tiers</h1>
+            <p>Official Tier List for all competitive members from the discord commuunity.</p>
+        </div>
     </header>
 
     <main class="tier-container">
         
-        <section class="tier-group tier-1">
+        <section class="tier-group tier-1 animate-tier">
             <h2>🥇 Tier 1</h2>
             
             <div class="tier-level high-tier">
@@ -43,7 +47,7 @@
             </div>
         </section>
 
-        <section class="tier-group tier-2">
+        <section class="tier-group tier-2 animate-tier">
             <h2>🥈 Tier 2</h2>
 
             <div class="tier-level high-tier">
@@ -63,7 +67,7 @@
             </div>
         </section>
 
-        <section class="tier-group tier-3">
+        <section class="tier-group tier-3 animate-tier">
             <h2>🥉 Tier 3</h2>
 
             <div class="tier-level high-tier">
@@ -83,8 +87,8 @@
             </div>
         </section>
 
-        <section class="tier-group tier-4">
-            <h2>✨ Tier 4</h2>
+        <section class="tier-group tier-4 grey-tier animate-tier">
+            <h2>Tier 4</h2>
 
             <div class="tier-level high-tier">
                 <h3>Tier 4 High</h3>
@@ -103,8 +107,8 @@
             </div>
         </section>
 
-        <section class="tier-group tier-5">
-            <h2>🔰 Tier 5</h2>
+        <section class="tier-group tier-5 grey-tier animate-tier">
+            <h2>Tier 5</h2>
 
             <div class="tier-level high-tier">
                 <h3>Tier 5 High</h3>
@@ -125,8 +129,101 @@
 
     </main>
 
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>ℹ️ Tier Point Requirements</h3>
+            <ul>
+                <li><strong>Tier 1:</strong> 500+ Points</li>
+                <li><strong>Tier 2:</strong> 400 - 499 Points</li>
+                <li><strong>Tier 3:</strong> 300 - 399 Points</li>
+                <li><strong>Tier 4:</strong> 200 - 299 Points</li>
+                <li><strong>Tier 5:</strong> 100 - 199 Points</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="settings-panel" class="settings-panel">
+        <span class="close-btn-panel">&times;</span>
+        <h3>⚙️ Site Settings</h3>
+        <div class="setting-option">
+            <h4>Theme</h4>
+            <button id="theme-dark">Dark</button>
+            <button id="theme-light">Light</button>
+        </div>
+        <div class="setting-option">
+            <h4>Font Size</h4>
+            <button id="font-smaller">A-</button>
+            <button id="font-default">A</button>
+            <button id="font-larger">A+</button>
+        </div>
+    </div>
+
     <footer>
         <p>Built with pride for the community. | Last Updated: [Date]</p>
     </footer>
+
+    <script>
+        // --- JAVASCRIPT FOR UI FUNCTIONALITY AND ANIMATION ---
+        
+        // Remove 'loading' class after a short delay to trigger CSS animation
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+            }, 100);
+        });
+
+        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY
+        const infoModal = document.getElementById('info-modal');
+        const settingsPanel = document.getElementById('settings-panel');
+        
+        // Information Modal
+        document.getElementById('info-btn').onclick = function() {
+            infoModal.style.display = 'block';
+        }
+        document.querySelector('#info-modal .close-btn').onclick = function() {
+            infoModal.style.display = 'none';
+        }
+
+        // Settings Panel
+        document.getElementById('settings-btn').onclick = function() {
+            settingsPanel.classList.toggle('open');
+        }
+        document.querySelector('#settings-panel .close-btn-panel').onclick = function() {
+            settingsPanel.classList.remove('open');
+        }
+
+        // Close modal/panel if clicked outside
+        window.onclick = function(event) {
+            if (event.target == infoModal) {
+                infoModal.style.display = 'none';
+            }
+        }
+        
+        // 2. BASIC SETTINGS FUNCTIONALITY (Theme/Font)
+        const body = document.body;
+
+        // Theme Toggle
+        document.getElementById('theme-light').onclick = () => {
+            body.classList.add('light-theme');
+        };
+        document.getElementById('theme-dark').onclick = () => {
+            body.classList.remove('light-theme');
+        };
+
+        // Font Size Adjustments
+        document.getElementById('font-smaller').onclick = () => {
+            body.style.fontSize = '0.9em';
+        };
+        document.getElementById('font-default').onclick = () => {
+            body.style.fontSize = '1em';
+        };
+        document.getElementById('font-larger').onclick = () => {
+            body.style.fontSize = '1.1em';
+        };
+
+    </script>
+</body>
+</html>
 </body>
 </html>
