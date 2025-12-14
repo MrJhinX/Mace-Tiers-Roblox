@@ -1,8 +1,8 @@
 /* General Setup */
 body {
-    font-family: sans-serif; /* A clean, readable font */
-    background-color: #121212; /* Dark background for a modern/gaming feel */
-    color: #e0e0e0; /* Light text for contrast */
+    font-family: sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -10,9 +10,53 @@ body {
 
 header {
     background-color: #202020;
-    padding: 30px 0;
+    padding: 20px 0;
     text-align: center;
-    border-bottom: 5px solid #ff4500; /* A pop of color */
+    /* CHANGED: Header separator to darkish-grey */
+    border-bottom: 5px solid #333333; 
+}
+
+/* Navigation Bar (UI Menu) Styling */
+.navbar {
+    background-color: #121212;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.nav-item {
+    color: #e0e0e0;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    background-color: #ff4500;
+    color: #ffffff;
+    border-color: #ff4500;
+}
+
+/* Specific Discord Link Styling */
+.discord-link {
+    /* Optional: Give the Discord link a distinct color */
+    color: #7289da; /* Discord brand color */
+    border-color: #7289da;
+}
+
+.discord-link:hover {
+    background-color: #7289da; /* Fills with Discord color on hover */
+    color: #ffffff;
+    border-color: #7289da;
 }
 
 h1 {
@@ -21,14 +65,14 @@ h1 {
     margin-bottom: 5px;
 }
 
-/* Tier Container Layout */
+/* --- Tiers Styling (No Change from previous step) --- */
+
 .tier-container {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* Individual Tier Groups (Tier 1, Tier 2, etc.) */
 .tier-group {
     background-color: #1e1e1e;
     border: 1px solid #333;
@@ -41,17 +85,18 @@ h1 {
     text-align: center;
     padding-bottom: 10px;
     margin-top: 0;
-    border-bottom: 3px solid; /* Color will be set by specific tier class */
+    border-bottom: 3px solid;
     font-size: 2em;
 }
 
 /* Tier Specific Colors */
-.tier-1 h2 { border-color: gold; color: gold; }
-.tier-2 h2 { border-color: silver; color: silver; }
-/* Add more: .tier-3 h2 { border-color: #cd7f32; color: #cd7f32; } (Bronze) */
+.tier-1 h2 { border-color: #ffd700; color: #ffd700; }
+.tier-2 h2 { border-color: #c0c0c0; color: #c0c0c0; }
+.tier-3 h2 { border-color: #cd7f32; color: #cd7f32; }
+.tier-4 h2 { border-color: #8a2be2; color: #8a2be2; }
+.tier-5 h2 { border-color: #008000; color: #008000; }
 
 
-/* High Tier / Low Tier Styling */
 .tier-level {
     padding: 15px;
     margin-top: 20px;
@@ -70,18 +115,17 @@ h1 {
 .tier-level h3 {
     margin-top: 0;
     font-size: 1.4em;
-    color: #ff4500; /* Highlight color for sub-tier headings */
+    color: #ff4500;
     border-bottom: 1px dashed #555;
     padding-bottom: 5px;
 }
 
-/* Member List Styling */
 .tier-level ul {
-    list-style: none; /* Remove default bullets */
+    list-style: none;
     padding: 0;
-    display: flex; /* Arrange members in a row if there are many */
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 15px; /* Space between member names */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .tier-level li {
