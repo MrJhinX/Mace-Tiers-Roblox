@@ -27,104 +27,84 @@
 
     <main class="tier-container">
         
-        <section class="tier-group tier-1 animate-tier">
+        <section class="info-section updates-section animate-tier" style="animation-delay: 0s;">
+            <h2>🔔 Community Updates</h2>
+            <ul>
+                <li>**14.12.2025:** New ranking season officially begins!</li>
+                <li>**08.12.2025:** Tier points have been finalized.</li>
+                <li>**01.12.2025:** Initial site launch and testing completed.</li>
+            </ul>
+        </section>
+
+        <section class="tier-group tier-1 animate-tier" style="animation-delay: 0.1s;">
             <h2>🥇 Tier 1</h2>
-            
             <div class="tier-level high-tier">
                 <h3>Tier 1 High</h3>
-                <ul>
-                    <li>Member Name A</li>
-                    <li>Member Name B</li>
-                </ul>
+                <ul><li>Member Name A</li><li>Member Name B</li></ul>
             </div>
-
             <div class="tier-level low-tier">
                 <h3>Tier 1 Low</h3>
-                <ul>
-                    <li>Member Name C</li>
-                    <li>Member Name D</li>
-                </ul>
+                <ul><li>Member Name C</li><li>Member Name D</li></ul>
             </div>
         </section>
 
-        <section class="tier-group tier-2 animate-tier">
+        <section class="tier-group tier-2 animate-tier" style="animation-delay: 0.2s;">
             <h2>🥈 Tier 2</h2>
-
             <div class="tier-level high-tier">
                 <h3>Tier 2 High</h3>
-                <ul>
-                    <li>Member Name E</li>
-                    <li>Member Name F</li>
-                </ul>
+                <ul><li>Member Name E</li><li>Member Name F</li></ul>
             </div>
-
             <div class="tier-level low-tier">
                 <h3>Tier 2 Low</h3>
-                <ul>
-                    <li>Member Name G</li>
-                    <li>Member Name H</li>
-                </ul>
+                <ul><li>Member Name G</li><li>Member Name H</li></ul>
             </div>
         </section>
 
-        <section class="tier-group tier-3 animate-tier">
+        <section class="tier-group tier-3 animate-tier" style="animation-delay: 0.3s;">
             <h2>🥉 Tier 3</h2>
-
             <div class="tier-level high-tier">
                 <h3>Tier 3 High</h3>
-                <ul>
-                    <li>Member Name I</li>
-                    <li>Member Name J</li>
-                </ul>
+                <ul><li>Member Name I</li><li>Member Name J</li></ul>
             </div>
-
             <div class="tier-level low-tier">
                 <h3>Tier 3 Low</h3>
-                <ul>
-                    <li>Member Name K</li>
-                    <li>Member Name L</li>
-                </ul>
+                <ul><li>Member Name K</li><li>Member Name L</li></ul>
             </div>
         </section>
 
-        <section class="tier-group tier-4 grey-tier animate-tier">
+        <section class="tier-group tier-4 grey-tier animate-tier" style="animation-delay: 0.4s;">
             <h2>Tier 4</h2>
-
             <div class="tier-level high-tier">
                 <h3>Tier 4 High</h3>
-                <ul>
-                    <li>Member Name M</li>
-                    <li>Member Name N</li>
-                </ul>
+                <ul><li>Member Name M</li><li>Member Name N</li></ul>
             </div>
-
             <div class="tier-level low-tier">
                 <h3>Tier 4 Low</h3>
-                <ul>
-                    <li>Member Name O</li>
-                    <li>Member Name P</li>
-                </ul>
+                <ul><li>Member Name O</li><li>Member Name P</li></ul>
             </div>
         </section>
 
-        <section class="tier-group tier-5 grey-tier animate-tier">
+        <section class="tier-group tier-5 grey-tier animate-tier" style="animation-delay: 0.5s;">
             <h2>Tier 5</h2>
-
             <div class="tier-level high-tier">
                 <h3>Tier 5 High</h3>
-                <ul>
-                    <li>Member Name Q</li>
-                    <li>Member Name R</li>
-                </ul>
+                <ul><li>Member Name Q</li><li>Member Name R</li></ul>
             </div>
-
             <div class="tier-level low-tier">
                 <h3>Tier 5 Low</h3>
-                <ul>
-                    <li>Member Name S</li>
-                    <li>Member Name T</li>
-                </ul>
+                <ul><li>Member Name S</li><li>Member Name T</li></ul>
             </div>
+        </section>
+
+        <section class="info-section top-players-section animate-tier" style="animation-delay: 0.6s;">
+            <h2>⭐ Top 5 Ranked Players</h2>
+            <ol>
+                <li>Member Name A (580 Points)</li>
+                <li>Member Name B (550 Points)</li>
+                <li>Member Name C (510 Points)</li>
+                <li>Member Name E (495 Points)</li>
+                <li>Member Name F (480 Points)</li>
+            </ol>
         </section>
 
     </main>
@@ -146,11 +126,13 @@
     <div id="settings-panel" class="settings-panel">
         <span class="close-btn-panel">&times;</span>
         <h3>⚙️ Site Settings</h3>
+        
         <div class="setting-option">
-            <h4>Theme</h4>
-            <button id="theme-dark">Dark</button>
-            <button id="theme-light">Light</button>
+            <h4>Tier Colors</h4>
+            <button id="color-on">Colorful</button>
+            <button id="color-off">Monochrome</button>
         </div>
+        
         <div class="setting-option">
             <h4>Font Size</h4>
             <button id="font-smaller">A-</button>
@@ -160,7 +142,8 @@
     </div>
 
     <footer>
-        <p>Built with pride for the community. | Last Updated: [Date]</p>
+        <p>Built with pride for the community. | Last Updated: 14.12.2025</p>
+        <p>Created by the community host, Kyoumi.</p>
     </footer>
 
     <script>
@@ -173,7 +156,7 @@
             }, 100);
         });
 
-        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY
+        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY (NO CHANGE)
         const infoModal = document.getElementById('info-modal');
         const settingsPanel = document.getElementById('settings-panel');
         
@@ -193,25 +176,25 @@
             settingsPanel.classList.remove('open');
         }
 
-        // Close modal/panel if clicked outside
+        // Close modal/panel if clicked outside (NO CHANGE)
         window.onclick = function(event) {
             if (event.target == infoModal) {
                 infoModal.style.display = 'none';
             }
         }
         
-        // 2. BASIC SETTINGS FUNCTIONALITY (Theme/Font)
+        // 2. BASIC SETTINGS FUNCTIONALITY (Font/Color Toggle)
         const body = document.body;
 
-        // Theme Toggle
-        document.getElementById('theme-light').onclick = () => {
-            body.classList.add('light-theme');
+        // NEW: Tier Color Toggle
+        document.getElementById('color-on').onclick = () => {
+            body.classList.remove('monochrome-tiers');
         };
-        document.getElementById('theme-dark').onclick = () => {
-            body.classList.remove('light-theme');
+        document.getElementById('color-off').onclick = () => {
+            body.classList.add('monochrome-tiers');
         };
 
-        // Font Size Adjustments
+        // Font Size Adjustments (NO CHANGE)
         document.getElementById('font-smaller').onclick = () => {
             body.style.fontSize = '0.9em';
         };
