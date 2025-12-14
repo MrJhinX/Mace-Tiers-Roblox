@@ -292,7 +292,7 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT FOR UI FUNCTIONALITY (Checked and Confirmed) ---
+        // --- JAVASCRIPT FOR UI FUNCTIONALITY (Including final Settings Fix) ---
         
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -310,9 +310,15 @@
         document.getElementById('info-btn').onclick = function() {
             infoModal.style.display = 'block';
         }
+        
+        // Settings Panel Open/Close FIX
         document.getElementById('settings-btn').onclick = function() {
             settingsPanel.classList.toggle('open');
         }
+        document.querySelector('#settings-panel .close-btn-panel').onclick = function() {
+            settingsPanel.classList.remove('open');
+        }
+        
         document.getElementById('updates-btn').onclick = function() {
             updatesModal.style.display = 'block';
         }
@@ -320,12 +326,9 @@
             topPlayersModal.style.display = 'block';
         }
 
-        // Close Buttons
+        // Close Buttons for Modals
         document.querySelector('#info-modal .close-btn').onclick = function() {
             infoModal.style.display = 'none';
-        }
-        document.querySelector('#settings-panel .close-btn-panel').onclick = function() {
-            settingsPanel.classList.remove('open');
         }
         document.querySelector('#updates-modal .close-btn').onclick = function() {
             updatesModal.style.display = 'none';
@@ -356,6 +359,7 @@
             document.getElementById(activeId).classList.add('active');
         }
 
+        // Color Toggle FIX
         document.getElementById('color-on').onclick = () => {
             body.classList.remove('monochrome-tiers');
             setActiveButton('.setting-option:nth-child(1)', 'color-on');
@@ -365,6 +369,7 @@
             setActiveButton('.setting-option:nth-child(1)', 'color-off');
         };
 
+        // Font Size FIX
         document.getElementById('font-smaller').onclick = () => {
             body.style.fontSize = '0.9em';
             setActiveButton('.setting-option:nth-child(2)', 'font-smaller');
