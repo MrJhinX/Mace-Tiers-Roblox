@@ -9,7 +9,7 @@ body {
     transition: font-size 0.3s;
 }
 
-/* Light Theme (For Settings - KEPT) */
+/* Light Theme (For Settings) */
 body.light-theme {
     background-color: #f0f0f0;
     color: #333;
@@ -89,7 +89,7 @@ nav {
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.1s;
     font-weight: bold;
     position: relative; 
-    z-index: 12; 
+    z-index: 12; /* Ensures nav links are clickable */
 }
 /* ADDED BUTTON HOVER ANIMATION (Lift up slightly) */
 .nav-item:hover {
@@ -115,7 +115,7 @@ nav {
     margin: 40px auto;
     padding: 0 20px;
     
-    /* CRITICAL FIX: GRID LAYOUT with explicit areas for reordering */
+    /* CRITICAL FIX: GRID LAYOUT with explicit areas for Tier 5 placement */
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     gap: 30px; 
@@ -136,12 +136,12 @@ nav {
 .top-players-section { grid-area: players; }
 
 
-/* --- NEW INFO SECTIONS (Top Players) --- */
+/* --- INFO SECTIONS (Top Players) --- */
 .info-section {
     background-color: #1e1e1e;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 0; /* Managed by grid gap */
+    margin-bottom: 0; 
     padding: 20px;
 }
 .top-players-section h2 {
@@ -168,7 +168,7 @@ nav {
     padding: 20px;
 }
 
-/* Individual Tier Fade-in Animation (KEPT) */
+/* Individual Tier Fade-in Animation */
 .animate-tier {
     opacity: 0;
     transform: translateX(-20px);
@@ -187,10 +187,16 @@ nav {
         transform: translateX(0);
     }
 }
-/* ... (rest of tier styling unchanged) ... */
 
+.tier-group h2 {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-top: 0;
+    border-bottom: 3px solid;
+    font-size: 2em;
+}
 
-/* Tier Specific Colors (KEPT) */
+/* Tier Specific Colors */
 .tier-1 h2 { border-color: #ffd700; color: #ffd700; }
 .tier-2 h2 { border-color: #c0c0c0; color: #c0c0c0; }
 .tier-3 h2 { border-color: #cd7f32; color: #cd7f32; }
@@ -207,12 +213,49 @@ body.monochrome-tiers .tier-3 h2 {
     color: #ccc;
 }
 
+.tier-level {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.high-tier {
+    background-color: #2a2a2a;
+}
+.low-tier {
+    background-color: #353535;
+}
+.tier-level h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: #ff4500;
+    border-bottom: 1px dashed #555;
+    padding-bottom: 5px;
+}
+.tier-level ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.tier-level li {
+    background-color: #404040;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+.tier-level li:hover {
+    background-color: #555555;
+}
+
 
 /* --- MODAL (Information/Updates) STYLING --- */
 .modal {
     display: none; 
     position: fixed; 
-    z-index: 900; /* Increased Z-index */
+    z-index: 900; 
     left: 0;
     top: 0;
     width: 100%;
@@ -231,16 +274,31 @@ body.monochrome-tiers .tier-3 h2 {
     position: relative;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
-/* Close button Z-index fix */
+.modal-content h3 {
+    color: #ff4500;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+.modal-content ul {
+    list-style: none;
+    padding: 0;
+}
+.modal-content li {
+    padding: 5px 0;
+}
 .close-btn {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-    z-index: 1000; /* Critical Fix: Ensures X is clickable */
+    z-index: 1000; 
     position: relative;
 }
-/* ... (rest of modal content styling unchanged) ... */
+.close-btn:hover,.close-btn:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
 /* --- SETTINGS PANEL STYLING --- */
@@ -252,15 +310,51 @@ body.monochrome-tiers .tier-3 h2 {
     height: 100%;
     background-color: #202020;
     box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    z-index: 900; /* Increased Z-index */
+    z-index: 900; 
     padding: 20px;
     transition: right 0.4s ease-in-out;
 }
 .settings-panel.open {
     right: 0; 
 }
+.settings-panel h3 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    color: #ff4500;
+}
 
-/* Close button panel Z-index fix */
+/* Settings button and container styling */
+.setting-option {
+    margin-bottom: 25px; 
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #333; 
+}
+.setting-option h4 {
+    margin-bottom: 10px;
+    color: #e0e0e0;
+}
+.settings-panel button {
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 8px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s, transform 0.1s;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.settings-panel button:hover {
+    background-color: #ff4500;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 69, 0, 0.4); 
+}
+.settings-panel button.active {
+    background-color: #ff4500;
+    border-color: #ff4500;
+    color: #fff;
+}
 .close-btn-panel {
     position: absolute;
     top: 10px;
@@ -268,7 +362,7 @@ body.monochrome-tiers .tier-3 h2 {
     font-size: 28px;
     color: #aaa;
     cursor: pointer;
-    z-index: 1000; /* Critical Fix: Ensures X is clickable */
+    z-index: 1000; 
 }
 
 
@@ -282,7 +376,6 @@ footer {
     font-size: 0.9em;
     border-top: 1px solid #333;
 }
-/* Style for the two lines of text in the footer */
 footer p:last-child {
     font-size: 0.8em;
     margin-top: 5px;
