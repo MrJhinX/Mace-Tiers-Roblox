@@ -13,42 +13,60 @@ body {
     display: none !important;
 }
 
-/* --- HEADER & NAVIGATION --- */
+/* --- PAGE LOAD ANIMATION & HEADER --- */
+.loading {
+    opacity: 0;
+    transform: translateY(20px);
+}
+body {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease-out, transform 0.5s ease-out;
+}
 header {
     background-color: #202020;
     padding: 20px 0;
     text-align: center;
     border-bottom: 5px solid #333333; 
 }
-/* ... site-icon and h1 styles ... */
-
-/* Action Button (Top Players) Style */
-.action-btn {
-    background-color: transparent;
-    color: #e0e0e0;
-    border: 1px solid #ff4500;
-    padding: 8px 15px;
-    margin-top: 20px;
-    margin-right: 15px; /* Separate it from mode selector */
-    font-size: 1em;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
-    z-index: 10; 
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.action-btn:hover {
-    background-color: rgba(255, 69, 0, 0.1);
-    box-shadow: 0 0 10px rgba(255, 69, 0, 0.6); /* Subtle Orange Glow */
+.site-icon {
+    width: 150px; 
+    height: auto;
+    margin-bottom: 10px;
+    animation: pulse 4s infinite alternate; 
+}
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.03); }
+}
+h1 {
     color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 5px;
 }
+.navbar {
+    background-color: #121212;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: right;
+}
+
 /* Navigation Links */
 .nav-item {
     color: #e0e0e0;
     text-decoration: none;
     padding: 8px 15px;
     margin: 0 5px;
-    border: 1px solid #444; /* Darker border */
+    border: 1px solid #444; 
     border-radius: 4px;
     transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
     font-weight: bold;
@@ -59,9 +77,8 @@ header {
     background-color: #ff4500;
     color: #ffffff;
     border-color: #ff4500;
-    box-shadow: 0 0 8px rgba(255, 69, 0, 0.5); /* Glowing effect on hover */
+    box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
 }
-/* Discord Link Styling */
 .discord-link {
     color: #7289da;
     border-color: #7289da;
@@ -71,6 +88,26 @@ header {
     color: #ffffff;
     border-color: #7289da;
     box-shadow: 0 0 8px rgba(114, 137, 218, 0.8);
+}
+/* Action Button (Top Players) Style */
+.action-btn {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: 1px solid #ff4500;
+    padding: 8px 15px;
+    margin-top: 20px;
+    margin-right: 15px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
+    z-index: 10; 
+}
+.action-btn:hover {
+    background-color: rgba(255, 69, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+    color: #ffffff;
 }
 
 /* --- TIER MODE SELECTOR STYLING --- */
@@ -118,6 +155,12 @@ header {
         "t3 t4"
         "t5 t5"; 
 }
+.tier-1 { grid-area: t1; }
+.tier-2 { grid-area: t2; }
+.tier-3 { grid-area: t3; }
+.tier-4 { grid-area: t4; }
+.tier-5 { grid-area: t5; } 
+
 .tier-group {
     background-color: #1e1e1e;
     border: 1px solid #333;
@@ -134,7 +177,7 @@ header {
     text-align: center;
     padding-bottom: 10px;
     margin-top: 0;
-    border-bottom: 3px solid #666; /* Default divider for Tier 4/5 */
+    border-bottom: 3px solid #666;
     font-size: 2em;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
@@ -148,7 +191,7 @@ header {
     color: #999; 
 }
 
-/* --- TIER LEVEL BOX STYLING FIX --- */
+/* --- TIER LEVEL BOX STYLING --- */
 .tier-level {
     padding: 15px;
     margin-top: 20px;
@@ -164,16 +207,16 @@ header {
 .tier-level h3 {
     margin-top: 0;
     font-size: 1.4em;
-    color: #ff4500; /* High Contrast Orange for Sub-Header */
+    color: #ff4500;
     border-bottom: 1px dashed #555;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
-/* New Player Tag Styling */
+/* Player Tag Styling */
 .player-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Space between player buttons */
+    gap: 10px;
 }
 .player-tag {
     background-color: #404040;
@@ -190,7 +233,7 @@ header {
     box-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
 }
 
-/* --- MODAL (Information/Updates/Top Players) STYLING FIX --- */
+/* --- MODAL (Information/Updates/Top Players) STYLING --- */
 .modal {
     display: none; 
     position: fixed; 
@@ -199,7 +242,7 @@ header {
     top: 0;
     width: 100%;
     height: 100vh; 
-    overflow-y: auto; /* Changed to y for better scrolling experience */
+    overflow-y: auto; 
     background-color: rgba(0,0,0,0.8); 
     padding-top: 10px; 
 }
@@ -207,12 +250,12 @@ header {
     background-color: #1e1e1e;
     margin: 10% auto; 
     padding: 20px;
-    border: 1px solid #ff4500; /* Orange border for modals */
+    border: 1px solid #ff4500;
     width: 80%;
     max-width: 400px;
     border-radius: 8px;
     position: relative;
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.5); /* Stronger glow */
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
 }
 .modal-content h3 {
     color: #ff4500;
@@ -220,7 +263,7 @@ header {
     padding-bottom: 10px;
 }
 .close-btn {
-    color: #ff4500; /* High visibility close button */
+    color: #ff4500; 
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -234,14 +277,18 @@ header {
 }
 
 /* Player List in Top Players Modal */
+.modal-content .player-list {
+    list-style-type: none;
+    padding: 0;
+}
 .modal-content .player-list li {
     background-color: transparent;
     padding: 5px 0;
     border-bottom: 1px dotted #333;
-    color: #ff8844; /* Slightly lighter orange for text */
+    color: #ff8844;
 }
 
-/* --- SETTINGS PANEL STYLING FIX --- */
+/* --- SETTINGS PANEL STYLING --- */
 .settings-panel {
     position: fixed;
     top: 0;
@@ -255,6 +302,9 @@ header {
     transition: right 0.4s ease-in-out;
     overflow-y: auto; 
     border-left: 1px solid #ff4500;
+}
+.settings-panel.open {
+    right: 0; 
 }
 .settings-panel button {
     background-color: #333;
@@ -290,6 +340,7 @@ header {
 .close-btn-panel:hover {
     color: #ffffff;
 }
+
 /* --- FOOTER --- */
 footer {
     text-align: center;
@@ -299,4 +350,9 @@ footer {
     color: #999;
     font-size: 0.9em;
     border-top: 1px solid #333;
+}
+footer p:last-child {
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: #666;
 }
