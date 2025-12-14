@@ -14,10 +14,12 @@ body {
 }
 
 /* --- PAGE LOAD ANIMATION & HEADER --- */
+/* Initial state on load */
 .loading {
     opacity: 0;
     transform: translateY(20px);
 }
+/* Animation transition to final state */
 body {
     opacity: 1;
     transform: translateY(0);
@@ -60,7 +62,7 @@ nav {
     text-align: right;
 }
 
-/* Navigation Links */
+/* Navigation Links & Buttons */
 .nav-item {
     color: #e0e0e0;
     text-decoration: none;
@@ -89,7 +91,6 @@ nav {
     border-color: #7289da;
     box-shadow: 0 0 8px rgba(114, 137, 218, 0.8);
 }
-/* Action Button (Top Players) Style */
 .action-btn {
     background-color: transparent;
     color: #e0e0e0;
@@ -167,8 +168,9 @@ nav {
     border-radius: 8px; 
     padding: 20px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8); 
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s; /* Ensures smooth hover animation */
 }
+/* TIER HOVER ANIMATION (You Liked) */
 .tier-group:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 69, 0, 0.2);
@@ -299,7 +301,7 @@ nav {
     box-shadow: -5px 0 15px rgba(0,0,0,0.8);
     z-index: 1000; 
     padding: 20px;
-    transition: right 0.4s ease-in-out;
+    transition: right 0.4s ease-in-out; /* Smooth slide transition */
     overflow-y: auto; 
     border-left: 1px solid #ff4500;
 }
