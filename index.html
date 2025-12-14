@@ -15,6 +15,7 @@
                 </a>
                 <a href="#" id="settings-btn" class="nav-item">⚙️ Settings</a>
                 <a href="#" id="info-btn" class="nav-item">ℹ️ Information</a>
+                <a href="#" id="updates-btn" class="nav-item">📣 Updates</a>
             </nav>
         </div>
         
@@ -27,21 +28,14 @@
 
     <main class="tier-container">
         
-        <section class="info-section updates-section animate-tier" style="animation-delay: 0s;">
-            <h2>🔔 Community Updates</h2>
-            <ul>
-                <li>**14.12.2025:** New ranking season officially begins!</li>
-                <li>**08.12.2025:** Tier points have been finalized.</li>
-                <li>**01.12.2025:** Initial site launch and testing completed.</li>
-            </ul>
-        </section>
-
         <section class="tier-group tier-1 animate-tier" style="animation-delay: 0.1s;">
             <h2>🥇 Tier 1</h2>
+            
             <div class="tier-level high-tier">
                 <h3>Tier 1 High</h3>
                 <ul><li>Member Name A</li><li>Member Name B</li></ul>
             </div>
+
             <div class="tier-level low-tier">
                 <h3>Tier 1 Low</h3>
                 <ul><li>Member Name C</li><li>Member Name D</li></ul>
@@ -50,10 +44,12 @@
 
         <section class="tier-group tier-2 animate-tier" style="animation-delay: 0.2s;">
             <h2>🥈 Tier 2</h2>
+
             <div class="tier-level high-tier">
                 <h3>Tier 2 High</h3>
                 <ul><li>Member Name E</li><li>Member Name F</li></ul>
             </div>
+
             <div class="tier-level low-tier">
                 <h3>Tier 2 Low</h3>
                 <ul><li>Member Name G</li><li>Member Name H</li></ul>
@@ -62,10 +58,12 @@
 
         <section class="tier-group tier-3 animate-tier" style="animation-delay: 0.3s;">
             <h2>🥉 Tier 3</h2>
+
             <div class="tier-level high-tier">
                 <h3>Tier 3 High</h3>
                 <ul><li>Member Name I</li><li>Member Name J</li></ul>
             </div>
+
             <div class="tier-level low-tier">
                 <h3>Tier 3 Low</h3>
                 <ul><li>Member Name K</li><li>Member Name L</li></ul>
@@ -74,10 +72,12 @@
 
         <section class="tier-group tier-4 grey-tier animate-tier" style="animation-delay: 0.4s;">
             <h2>Tier 4</h2>
+
             <div class="tier-level high-tier">
                 <h3>Tier 4 High</h3>
                 <ul><li>Member Name M</li><li>Member Name N</li></ul>
             </div>
+
             <div class="tier-level low-tier">
                 <h3>Tier 4 Low</h3>
                 <ul><li>Member Name O</li><li>Member Name P</li></ul>
@@ -86,16 +86,18 @@
 
         <section class="tier-group tier-5 grey-tier animate-tier" style="animation-delay: 0.5s;">
             <h2>Tier 5</h2>
+
             <div class="tier-level high-tier">
                 <h3>Tier 5 High</h3>
                 <ul><li>Member Name Q</li><li>Member Name R</li></ul>
             </div>
+
             <div class="tier-level low-tier">
                 <h3>Tier 5 Low</h3>
                 <ul><li>Member Name S</li><li>Member Name T</li></ul>
             </div>
         </section>
-
+        
         <section class="info-section top-players-section animate-tier" style="animation-delay: 0.6s;">
             <h2>⭐ Top 5 Ranked Players</h2>
             <ol>
@@ -108,6 +110,18 @@
         </section>
 
     </main>
+    
+    <div id="updates-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>🔔 Community Updates</h3>
+            <ul>
+                <li>**14.12.2025:** New ranking season officially begins!</li>
+                <li>**08.12.2025:** Tier points have been finalized.</li>
+                <li>**01.12.2025:** Initial site launch and testing completed.</li>
+            </ul>
+        </div>
+    </div>
 
     <div id="info-modal" class="modal">
         <div class="modal-content">
@@ -156,10 +170,11 @@
             }, 100);
         });
 
-        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY (NO CHANGE)
+        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY
         const infoModal = document.getElementById('info-modal');
         const settingsPanel = document.getElementById('settings-panel');
-        
+        const updatesModal = document.getElementById('updates-modal'); // NEW: Updates Modal
+
         // Information Modal
         document.getElementById('info-btn').onclick = function() {
             infoModal.style.display = 'block';
@@ -175,11 +190,21 @@
         document.querySelector('#settings-panel .close-btn-panel').onclick = function() {
             settingsPanel.classList.remove('open');
         }
+        
+        // Updates Modal (NEW LOGIC)
+        document.getElementById('updates-btn').onclick = function() {
+            updatesModal.style.display = 'block';
+        }
+        document.querySelector('#updates-modal .close-btn').onclick = function() {
+            updatesModal.style.display = 'none';
+        }
 
-        // Close modal/panel if clicked outside (NO CHANGE)
+        // Close modal/panel if clicked outside (UPDATED: Added check for updatesModal)
         window.onclick = function(event) {
             if (event.target == infoModal) {
                 infoModal.style.display = 'none';
+            } else if (event.target == updatesModal) {
+                updatesModal.style.display = 'none';
             }
         }
         
@@ -194,7 +219,7 @@
             body.classList.add('monochrome-tiers');
         };
 
-        // Font Size Adjustments (NO CHANGE)
+        // Font Size Adjustments (KEPT)
         document.getElementById('font-smaller').onclick = () => {
             body.style.fontSize = '0.9em';
         };
