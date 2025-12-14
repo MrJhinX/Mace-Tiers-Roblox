@@ -6,10 +6,10 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    transition: font-size 0.3s; /* Only keep transition for font size */
+    transition: font-size 0.3s;
 }
 
-/* Light Theme (For Settings - KEPT, but removed color transition from body) */
+/* Light Theme (For Settings - KEPT) */
 body.light-theme {
     background-color: #f0f0f0;
     color: #333;
@@ -29,12 +29,10 @@ body.light-theme .nav-item {
 }
 
 /* --- PAGE LOAD ANIMATION --- */
-/* Initial state when page loads */
 .loading {
     opacity: 0;
     transform: translateY(20px);
 }
-/* Animation when 'loading' class is removed by JavaScript */
 body {
     opacity: 1;
     transform: translateY(0);
@@ -54,10 +52,9 @@ header {
     align-items: center;
 }
 .site-icon {
-    width: 150px; /* Increased size for the icon (Assuming high-res is desired) */
+    width: 150px; 
     height: auto;
     margin-bottom: 10px;
-    /* Added subtle breathing animation */
     animation: pulse 4s infinite alternate; 
 }
 @keyframes pulse {
@@ -70,7 +67,7 @@ h1 {
     margin-bottom: 5px;
 }
 
-/* --- NAVIGATION BAR --- */
+/* --- NAVIGATION BAR & ANIMATION FIXES --- */
 .navbar {
     background-color: #121212;
     padding: 10px 0;
@@ -88,9 +85,11 @@ nav {
     margin: 0 5px;
     border: 1px solid #333;
     border-radius: 4px;
-    /* ADDED TRANSITION FOR ANIMATION */
+    /* Added transition for animation, and z-index for clickability */
     transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.1s;
     font-weight: bold;
+    position: relative; 
+    z-index: 12; 
 }
 /* ADDED BUTTON HOVER ANIMATION (Lift up slightly) */
 .nav-item:hover {
@@ -110,25 +109,46 @@ nav {
     border-color: #7289da;
 }
 
-/* --- NEW INFO SECTIONS (Updates and Top Players) --- */
+/* --- TIER CONTAINER GRID FIX & REORDERING --- */
+.tier-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    
+    /* CRITICAL FIX: GRID LAYOUT with explicit areas for reordering */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 30px; 
+    
+    /* Define the names of the areas in the grid: */
+    grid-template-areas:
+        "t1 t2"
+        "t3 t4"
+        "t5 players"; /* Tier 5 is now next to Top Players */
+}
+
+/* Assign each section to its area */
+.tier-1 { grid-area: t1; }
+.tier-2 { grid-area: t2; }
+.tier-3 { grid-area: t3; }
+.tier-4 { grid-area: t4; }
+.tier-5 { grid-area: t5; }
+.top-players-section { grid-area: players; }
+
+
+/* --- NEW INFO SECTIONS (Top Players) --- */
 .info-section {
     background-color: #1e1e1e;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 30px;
+    margin-bottom: 0; /* Managed by grid gap */
     padding: 20px;
-    /* Ensures these sections span both columns of the grid */
-    grid-column: 1 / -1; 
 }
-.updates-section h2, .top-players-section h2 {
+.top-players-section h2 {
     color: #ff4500;
     border-bottom: 2px dashed #333;
     padding-bottom: 5px;
     margin-top: 0;
-}
-.updates-section ul {
-    list-style: disc;
-    padding-left: 20px;
 }
 .top-players-section ol {
     list-style: decimal;
@@ -141,22 +161,10 @@ nav {
 
 
 /* --- TIER STRUCTURE AND ANIMATION --- */
-.tier-container {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-    
-    /* CRITICAL FIX: ADD GRID LAYOUT */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-    gap: 30px; /* Space between the tier boxes */
-}
-
 .tier-group {
     background-color: #1e1e1e;
     border: 1px solid #333;
     border-radius: 8px;
-    margin-bottom: 0; /* Removed margin-bottom because gap handles spacing */
     padding: 20px;
 }
 
@@ -179,21 +187,13 @@ nav {
         transform: translateX(0);
     }
 }
+/* ... (rest of tier styling unchanged) ... */
 
-.tier-group h2 {
-    text-align: center;
-    padding-bottom: 10px;
-    margin-top: 0;
-    border-bottom: 3px solid;
-    font-size: 2em;
-}
 
 /* Tier Specific Colors (KEPT) */
 .tier-1 h2 { border-color: #ffd700; color: #ffd700; }
 .tier-2 h2 { border-color: #c0c0c0; color: #c0c0c0; }
 .tier-3 h2 { border-color: #cd7f32; color: #cd7f32; }
-
-/* TIER 4 & 5: GREY THEME (KEPT) */
 .grey-tier h2 { 
     border-color: #666; 
     color: #999; 
@@ -207,15 +207,69 @@ body.monochrome-tiers .tier-3 h2 {
     color: #ccc;
 }
 
-/* Tier Level Styling (KEPT) */
-.tier-level {
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+/* --- MODAL (Information/Updates) STYLING --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 900; /* Increased Z-index */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); 
+}
+.modal-content {
+    background-color: #1e1e1e;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+/* Close button Z-index fix */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 1000; /* Critical Fix: Ensures X is clickable */
+    position: relative;
+}
+/* ... (rest of modal content styling unchanged) ... */
+
+
+/* --- SETTINGS PANEL STYLING --- */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: -300px; 
+    width: 280px;
+    height: 100%;
+    background-color: #202020;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    z-index: 900; /* Increased Z-index */
+    padding: 20px;
+    transition: right 0.4s ease-in-out;
+}
+.settings-panel.open {
+    right: 0; 
 }
 
-/* ... (Rest of .tier-level styles are unchanged) ... */
+/* Close button panel Z-index fix */
+.close-btn-panel {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    color: #aaa;
+    cursor: pointer;
+    z-index: 1000; /* Critical Fix: Ensures X is clickable */
+}
 
 
 /* --- FOOTER (UPDATED) --- */
@@ -226,9 +280,9 @@ footer {
     background-color: #202020;
     color: #999;
     font-size: 0.9em;
-    border-top: 1px solid #333; /* Added separator for style */
+    border-top: 1px solid #333;
 }
-/* Added style for the second line of text */
+/* Style for the two lines of text in the footer */
 footer p:last-child {
     font-size: 0.8em;
     margin-top: 5px;
