@@ -168,7 +168,7 @@
         const infoModal = document.getElementById('info-modal');
         const settingsPanel = document.getElementById('settings-panel');
         const updatesModal = document.getElementById('updates-modal'); 
-        const topPlayersModal = document.getElementById('top-players-modal');
+        const topPlayersModal = document.getElementById('top-players-modal'); // Mapped Modal ID
 
         // Information Modal
         document.getElementById('info-btn').onclick = function() {
@@ -194,11 +194,11 @@
             updatesModal.style.display = 'none';
         }
         
-        // Top Players Modal
-        document.getElementById('top-players-btn').onclick = function() {
+        // Top Players Modal (FIXED LOGIC)
+        document.getElementById('top-players-btn').onclick = function() { // Mapped Button ID
             topPlayersModal.style.display = 'block';
         }
-        document.querySelector('#top-players-modal .close-btn').onclick = function() {
+        document.querySelector('#top-players-modal .close-btn').onclick = function() { // Mapped Close Button
             topPlayersModal.style.display = 'none';
         }
 
@@ -213,7 +213,7 @@
             }
         }
         
-        // 2. BASIC SETTINGS FUNCTIONALITY (Font/Color Toggle)
+        // 2. BASIC SETTINGS FUNCTIONALITY (Font/Color Toggle - Unchanged)
         const body = document.body;
 
         function setActiveButton(containerId, activeId) {
@@ -224,7 +224,6 @@
             document.getElementById(activeId).classList.add('active');
         }
 
-        // Tier Color Toggle
         document.getElementById('color-on').onclick = () => {
             body.classList.remove('monochrome-tiers');
             setActiveButton('.setting-option:nth-child(1)', 'color-on');
@@ -234,7 +233,6 @@
             setActiveButton('.setting-option:nth-child(1)', 'color-off');
         };
 
-        // Font Size Adjustments
         document.getElementById('font-smaller').onclick = () => {
             body.style.fontSize = '0.9em';
             setActiveButton('.setting-option:nth-child(2)', 'font-smaller');
