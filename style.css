@@ -1,34 +1,106 @@
+/* General Setup */
 body {
-  background: #0b0b0b;
-  color: white;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
+    font-family: sans-serif; /* A clean, readable font */
+    background-color: #121212; /* Dark background for a modern/gaming feel */
+    color: #e0e0e0; /* Light text for contrast */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #202020;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 5px solid #ff4500; /* A pop of color */
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 2.5em;
+    margin-bottom: 5px;
 }
 
-.tier {
-  margin-bottom: 30px;
+/* Tier Container Layout */
+.tier-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.tier-title {
-  font-size: 22px;
-  margin-bottom: 10px;
+/* Individual Tier Groups (Tier 1, Tier 2, etc.) */
+.tier-group {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    padding: 20px;
 }
 
-.player {
-  background: #161616;
-  border-left: 5px solid #ff4444;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
+.tier-group h2 {
+    text-align: center;
+    padding-bottom: 10px;
+    margin-top: 0;
+    border-bottom: 3px solid; /* Color will be set by specific tier class */
+    font-size: 2em;
 }
 
-.player span {
-  color: #aaa;
-  font-size: 14px;
+/* Tier Specific Colors */
+.tier-1 h2 { border-color: gold; color: gold; }
+.tier-2 h2 { border-color: silver; color: silver; }
+/* Add more: .tier-3 h2 { border-color: #cd7f32; color: #cd7f32; } (Bronze) */
+
+
+/* High Tier / Low Tier Styling */
+.tier-level {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.high-tier {
+    background-color: #2a2a2a;
+}
+
+.low-tier {
+    background-color: #353535;
+}
+
+.tier-level h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: #ff4500; /* Highlight color for sub-tier headings */
+    border-bottom: 1px dashed #555;
+    padding-bottom: 5px;
+}
+
+/* Member List Styling */
+.tier-level ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    display: flex; /* Arrange members in a row if there are many */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 15px; /* Space between member names */
+}
+
+.tier-level li {
+    background-color: #404040;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.tier-level li:hover {
+    background-color: #555555;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #202020;
+    color: #999;
+    font-size: 0.9em;
 }
