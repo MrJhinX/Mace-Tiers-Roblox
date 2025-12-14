@@ -33,7 +33,7 @@
                 <input type="radio" id="sword-mode" name="tier-mode" value="sword">
                 <label for="sword-mode">Sword Sub-Tier</label>
             </div>
-            </div>
+        </div>
     </header>
 
     <div id="tier-list-wrapper">
@@ -232,7 +232,7 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT FOR UI FUNCTIONALITY AND ANIMATION ---
+        // --- JAVASCRIPT FOR UI FUNCTIONALITY ---
         
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -240,40 +240,41 @@
             }, 100);
         });
 
-        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY (Unchanged)
+        // 1. MODAL/PANEL TOGGLE FUNCTIONALITY
         const infoModal = document.getElementById('info-modal');
         const settingsPanel = document.getElementById('settings-panel');
         const updatesModal = document.getElementById('updates-modal'); 
         const topPlayersModal = document.getElementById('top-players-modal');
 
+        // Nav Buttons
         document.getElementById('info-btn').onclick = function() {
             infoModal.style.display = 'block';
         }
-        document.querySelector('#info-modal .close-btn').onclick = function() {
-            infoModal.style.display = 'none';
-        }
-
         document.getElementById('settings-btn').onclick = function() {
             settingsPanel.classList.toggle('open');
+        }
+        document.getElementById('updates-btn').onclick = function() {
+            updatesModal.style.display = 'block';
+        }
+        document.getElementById('top-players-btn').onclick = function() {
+            topPlayersModal.style.display = 'block';
+        }
+
+        // Close Buttons
+        document.querySelector('#info-modal .close-btn').onclick = function() {
+            infoModal.style.display = 'none';
         }
         document.querySelector('#settings-panel .close-btn-panel').onclick = function() {
             settingsPanel.classList.remove('open');
         }
-        
-        document.getElementById('updates-btn').onclick = function() {
-            updatesModal.style.display = 'block';
-        }
         document.querySelector('#updates-modal .close-btn').onclick = function() {
             updatesModal.style.display = 'none';
-        }
-        
-        document.getElementById('top-players-btn').onclick = function() {
-            topPlayersModal.style.display = 'block';
         }
         document.querySelector('#top-players-modal .close-btn').onclick = function() {
             topPlayersModal.style.display = 'none';
         }
 
+        // Close modal/panel if clicked outside
         window.onclick = function(event) {
             if (event.target == infoModal) {
                 infoModal.style.display = 'none';
@@ -317,7 +318,7 @@
             setActiveButton('.setting-option:nth-child(2)', 'font-larger');
         };
 
-        // 3. NEW: TIER MODE SWITCHING LOGIC
+        // 3. TIER MODE SWITCHING LOGIC
         const maceTiers = document.getElementById('mace-rankings');
         const swordTiers = document.getElementById('sword-rankings');
         const modeRadios = document.querySelectorAll('input[name="tier-mode"]');
@@ -333,7 +334,6 @@
                 }
             });
         });
-        // Ensure the default view is set on load
         swordTiers.classList.add('hidden'); 
     </script>
 </body>
